@@ -14,21 +14,24 @@ public class Range implements IntegerSequence{
   public void reset(){
     current = start;
   }
-/*
+
   public int length(){
-    //
+    return current - start;
   }
 
-  //When current is no longer a valid element in the range, it should return false.
   public boolean hasNext(){
-    //
+    if (end >= current)
+      return true;
+    return false;
   }
 
-  //@throws NoSuchElementException when hasNext() is false.
-  //This will return the current value, it will also increase current value by 1.
-  //e.g.  if current is 5. This will make current 6, and return 5.
   public int next(){
-    //
+    if (this.hasNext()){
+      current++;
+      return current-1;
+    }
+    else
+      throw NoSuchElementException;
   }
 
 
