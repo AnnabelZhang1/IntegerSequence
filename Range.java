@@ -31,17 +31,15 @@ public class Range implements IntegerSequence{
       return current-1;
     }
     else
-      throw NoSuchElementException;
+      throw new NoSuchElementException();
   }
-
 
   public static void main (String[] args){
     IntegerSequence r = new Range(10,15);
     while(r.hasNext()){
-      System.out.print(r.next())
+      System.out.print(r.next());
       if(r.hasNext())
          System.out.print(", ");
     }
-  }
-    System.out.println(); //expected: 10, 11, 12, 13, 14, 15*/
+  } //expected: 10, 11, 12, 13, 14, 15*/
 }
