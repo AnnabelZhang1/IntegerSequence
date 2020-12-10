@@ -14,7 +14,7 @@ public class Range implements IntegerSequence{
   }
 
   public int length(){
-    return current - start;
+    return end - start;
   }
 
   public boolean hasNext(){
