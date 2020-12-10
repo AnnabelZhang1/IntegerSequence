@@ -13,7 +13,7 @@ public class ArraySequence implements IntegerSequence{
   }
 
   public boolean hasNext(){
-    return (this.length() > this.currentIndex);
+    return (this.data.length > this.currentIndex);
   }
 
   public int next(){
@@ -29,13 +29,15 @@ public class ArraySequence implements IntegerSequence{
     this.data = new int[other.length];
     for (int i = 0; i < other.length; i++)
       data[i] = other[i];
-    this.currentIndex = 0;
+    currentIndex = 0;
   }
 
   public ArraySequence(IntegerSequence otherseq){
+    System.out.print("length:" + otherseq.length());
     this.data = new int[otherseq.length()];
     for (int i = 0; i < data.length; i++)
       data[i] = otherseq.next();
+    currentIndex = 0;
     otherseq.reset();
   }
 
