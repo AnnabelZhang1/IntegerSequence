@@ -5,15 +5,15 @@ public class ArraySequence implements IntegerSequence{
   private int[] data;
 
   public void reset(){
-    this.currentIndex = 0;
+    currentIndex = 0;
   }
 
   public int length(){
-    return this.data.length;
+    return data.length;
   }
 
   public boolean hasNext(){
-    return (this.data.length > this.currentIndex);
+    return (data.length > currentIndex);
   }
 
   public int next(){
@@ -26,16 +26,24 @@ public class ArraySequence implements IntegerSequence{
   }
 
   public ArraySequence(int[] other){
-    this.data = new int[other.length];
+    data = new int[other.length];
     for (int i = 0; i < other.length; i++)
       data[i] = other[i];
     currentIndex = 0;
   }
 
   public ArraySequence(IntegerSequence otherseq){
-    this.data = new int[otherseq.length()];
-    for (int i = 0; i < data.length; i++)
-      data[i] = otherseq.next();
+    data = new int[otherseq.length()+1];
+    int count = 0;
+      while (otherseq.hasNext()) {
+        try {
+          data[count] = otherseq.next();
+          count++;
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+            System.out.println("No element here. Set to 0");
+        }
+    }
     currentIndex = 0;
     otherseq.reset();
   }

@@ -18,15 +18,16 @@ public class Range implements IntegerSequence{
   }
 
   public boolean hasNext(){
-    if (end >= current)
+    if (current <= end)
       return true;
     return false;
   }
 
   public int next(){
     if (this.hasNext()){
+      int before = current;
       current++;
-      return current-1;
+      return before;
     }
     else
       throw new NoSuchElementException();
